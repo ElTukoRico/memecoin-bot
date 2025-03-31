@@ -7,35 +7,39 @@ import './index.css';
 
 function App() {
   const [userMessage, setUserMessage] = useState('');
-  const [chatResponse, setChatResponse] = useState('');
   const [chatHistory, setChatHistory] = useState([]); // For storing chat history
+  const [chatResponse, setChatResponse] = useState(''); // For displaying the bot's response
 
   // Handle sending message and getting a response from OpenAI
   const handleChat = async () => {
-    // Save the user message in the chat history
     const newMessage = { sender: 'user', message: userMessage };
     setChatHistory([...chatHistory, newMessage]);
 
     try {
       const response = await axios.post(
-        'https://api.openai.com/v1/completions',
+        'https://api.openai.com/v1/chat/completions', // Use the correct API endpoint for chat
         {
-          model: 'text-davinci-003', // Use 'gpt-4' for better performance
-          prompt: `You are an expert cryptocurrency assistant. Answer the following questions related to crypto. Provide links to reliable sources if needed: \n\nQ: ${userMessage}\nA:`,
+          model: 'gpt-3.5-turbo',  // Or 'gpt-4'
+          messages: [
+            { role: 'system', content: 'You are an expert cryptocurrency assistant.' },
+            { role: 'user', content: userMessage }
+          ],
           max_tokens: 150,
           temperature: 0.7,
         },
         {
           headers: {
-            'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+            'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`, // Authorization with API Key
           },
         }
       );
 
       // Get the response text and add it to the chat history
-      const botMessage = { sender: 'bot', message: response.data.choices[0].text.trim() };
+      const botMessage = { sender: 'bot', message: response.data.choices[0].message.content.trim() };
       setChatHistory([...chatHistory, newMessage, botMessage]);
-      setChatResponse(response.data.choices[0].text.trim());
+
+      // Set the bot's response for display
+      setChatResponse(response.data.choices[0].message.content.trim());
     } catch (error) {
       console.error('Error getting response from OpenAI:', error);
       setChatResponse('Sorry, there was an error. Please try again.');
@@ -53,6 +57,13 @@ function App() {
     height: '100vh',            
   };
 
+  // Handle Enter key press in the textarea
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleChat();
+    }
+  };
+
   return (
     <div className="App" style={divStyle}>
       <header className="App-header">
@@ -68,19 +79,28 @@ function App() {
           ))}
         </div>
 
+        {/* Display the latest bot response */}
+        {chatResponse && (
+          <div className="bot-response">
+            <strong>Bot:</strong> {chatResponse}
+          </div>
+        )}
+
         {/* Chat Input */}
         <div>
           <textarea
             value={userMessage}
             onChange={(e) => setUserMessage(e.target.value)}
+            onKeyDown={handleKeyPress}  // Listen for Enter key press
             placeholder="Ask me anything about cryptocurrency..."
+            style={{ color: 'black' }}  // Ensure black text for user input
           />
           <button onClick={handleChat}>Send</button>
         </div>
-        <p>{chatResponse}</p>
       </header>
     </div>
   );
 }
 
 export default App;
+

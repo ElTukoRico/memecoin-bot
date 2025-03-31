@@ -1,75 +1,102 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* Set global font and background styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;  /* A light gray background for the page */
+  color: #333;  /* Dark text for readability */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
+/* Styling for the header */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  padding: 50px 0;
+  background-color: #3a3a3a; /* Dark header background */
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.App-header h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.App-header .logo {
+  height: 100px;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Make the logo circular */
 }
 
 .chat-history {
-  width: 80%;
-  max-height: 400px;
-  overflow-y: auto;
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: #fff;
   padding: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.chat-history .user-message {
+  background-color: #ff2a00;
+  padding: 10px;
+  margin: 5px 0;
   border-radius: 8px;
+  text-align: left;
+  max-width: 80%;
+  margin-left: auto;
 }
 
-.user-message {
+.chat-history .bot-message {
+  background-color: #ff0000;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
   text-align: left;
-  background-color: #daf1da;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 5px;
-}
-
-.bot-message {
-  text-align: left;
-  background-color: #e6e6e6;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 5px;
+  max-width: 80%;
+  margin-right: auto;
 }
 
 textarea {
-  width: 300px;
-  height: 100px;
+  width: 100%;
+  height: 60px;
   padding: 10px;
-  font-size: 16px;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #9e0b0b;
 }
 
 button {
-  padding: 10px;
-  margin-top: 10px;
+  padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
+  font-size: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #45a049;
 }
 
-p {
-  margin-top: 20px;
-  font-size: 18px;
-  color: white;
+button:focus {
+  outline: none;
 }
 
+p {
+  color: #4CAF50;
+  font-weight: bold;
+}
