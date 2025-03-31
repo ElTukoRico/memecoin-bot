@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/memecoin-bot/static/css/main.9d1653b8.css",
-    "main.js": "/memecoin-bot/static/js/main.c12dd05f.js",
-    "static/js/453.e4e50775.chunk.js": "/memecoin-bot/static/js/453.e4e50775.chunk.js",
-    "static/media/prueba.png": "/memecoin-bot/static/media/prueba.18241242f2546f31d49d.png",
-    "index.html": "/memecoin-bot/index.html",
-    "main.9d1653b8.css.map": "/memecoin-bot/static/css/main.9d1653b8.css.map",
-    "main.c12dd05f.js.map": "/memecoin-bot/static/js/main.c12dd05f.js.map",
-    "453.e4e50775.chunk.js.map": "/memecoin-bot/static/js/453.e4e50775.chunk.js.map"
+    "main.css": "/static/css/main.5d044804.css",
+    "main.js": "/static/js/main.d19e733d.js",
+    "static/js/453.e4e50775.chunk.js": "/static/js/453.e4e50775.chunk.js",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.5d044804.css.map": "/static/css/main.5d044804.css.map",
+    "main.d19e733d.js.map": "/static/js/main.d19e733d.js.map",
+    "453.e4e50775.chunk.js.map": "/static/js/453.e4e50775.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d1653b8.css",
-    "static/js/main.c12dd05f.js"
+    "static/css/main.5d044804.css",
+    "static/js/main.d19e733d.js"
   ]
 }
